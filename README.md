@@ -36,9 +36,8 @@ To see the params in reports, register them once in GA4 as **event-scoped custom
 
 ## Custom domain
 
-`untestable.dev` is registered at Cloudflare Registrar. DNS (Cloudflare, **DNS only** — not proxied, so GitHub Pages can provision TLS):
+`untestable.dev` is registered at Cloudflare Registrar. This site lives at `recipes.untestable.dev`; DNS (Cloudflare, **DNS only** — not proxied, so GitHub Pages can provision TLS):
 
-- `untestable.dev` CNAME → `tsuemura.github.io` (apex, CNAME-flattened by Cloudflare)
-- `www.untestable.dev` CNAME → `tsuemura.github.io` (GitHub redirects it to the apex)
+- `recipes.untestable.dev` CNAME → `untestable-dev.github.io`
 
-The custom domain is set in repository **Settings → Pages**, and `site` in `astro.config.mjs` points at `https://untestable.dev` (no `base`).
+The custom domain is set in repository **Settings → Pages**, and `site` in `astro.config.mjs` points at `https://recipes.untestable.dev` (no `base`). The apex `untestable.dev` (consulting site) is served separately from Cloudflare Workers.

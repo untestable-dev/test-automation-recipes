@@ -38,10 +38,11 @@ gtag('config', '${GA_ID}');
 		var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
 		if (!a) return;
 		var lib = null;
+		var gh = a.href.match(/github\\.com\\/(?:tsuemura|untestable-dev)\\/([^\\/?#]+)/);
 		if (a.href.indexOf('npmjs.com/package/') !== -1) {
 			lib = a.href.split('/package/')[1];
-		} else if (a.href.indexOf('github.com/tsuemura/') !== -1) {
-			lib = a.href.split('github.com/tsuemura/')[1];
+		} else if (gh) {
+			lib = gh[1];
 		}
 		if (lib) {
 			gtag('event', 'library_click', { library: lib.split(/[\\/?#]/)[0] });
@@ -69,12 +70,12 @@ export default defineConfig({
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://github.com/tsuemura/test-automation-recipes',
+					href: 'https://github.com/untestable-dev/test-automation-recipes',
 				},
 			],
 			editLink: {
 				baseUrl:
-					'https://github.com/tsuemura/test-automation-recipes/edit/main/',
+					'https://github.com/untestable-dev/test-automation-recipes/edit/main/',
 			},
 			head: gaHead,
 			sidebar: [

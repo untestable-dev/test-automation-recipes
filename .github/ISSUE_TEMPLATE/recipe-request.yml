@@ -1,0 +1,30 @@
+name: Recipe request
+description: Tell us what you can't test — it may become the next recipe. (日本語でもOKです)
+title: '[request] '
+labels: [recipe-request]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What can't you test?
+      description: The feature or interaction that resists automation. / テストできずに困っている機能・操作。
+      placeholder: We're having trouble testing ... / 〜〜がテストできなくて困っています
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How could the hard part be reproduced as a mock?
+      description: Anything that helps rebuild it in isolation — libraries involved, APIs used, a public page that behaves similarly. / 単体で再現するための手がかり(使用ライブラリ、API、似た挙動の公開ページなど)。
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried?
+      description: Approaches that didn't work, and how they failed. / 試したことと、どう失敗したか。
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Publicness / 公開について
+      options:
+        - label: I understand this request and any resulting recipe are public (MIT licensed). / このリクエストと成果物のレシピが公開(MITライセンス)されることを理解しています。
+          required: true

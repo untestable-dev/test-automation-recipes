@@ -109,18 +109,6 @@ export default defineConfig({
 					translations: { ja: '戦略とメンテナンス' },
 					items: [{ autogenerate: { directory: 'recipes/strategy' } }],
 				},
-				{
-					label: 'Consulting',
-					translations: { ja: 'コンサルティング' },
-					items: [
-						{
-							label: 'Hire me — untestable.dev',
-							translations: { ja: 'ご相談は untestable.dev へ' },
-							link: 'https://untestable.dev/',
-							attrs: { target: '_blank' },
-						},
-					],
-				},
 			],
 		}),
 	],

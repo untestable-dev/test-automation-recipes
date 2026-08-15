@@ -54,12 +54,17 @@ gtag('config', '${GA_ID}');
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://untestable.dev',
+	site: 'https://recipes.untestable.dev',
 	integrations: [
 		starlight({
 			title: 'Test Automation Recipes',
 			description:
 				'Hands-on recipes for the hard-to-test parts of the web: microphone input, maps, toasts, WebAuthn, flaky-test repair and more — beyond what Playwright supports out of the box.',
+			defaultLocale: 'root',
+			locales: {
+				root: { label: 'English', lang: 'en' },
+				ja: { label: '日本語', lang: 'ja' },
+			},
 			social: [
 				{
 					icon: 'github',
@@ -75,27 +80,45 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Start Here',
-					items: [{ label: 'Featured libraries', slug: 'libraries' }],
+					translations: { ja: 'はじめに' },
+					items: ['libraries'],
 				},
 				{
 					label: 'Media & Devices',
+					translations: { ja: 'メディアとデバイス' },
 					items: [{ autogenerate: { directory: 'recipes/media' } }],
 				},
 				{
 					label: 'Complex UI',
+					translations: { ja: '複雑なUI' },
 					items: [{ autogenerate: { directory: 'recipes/complex-ui' } }],
 				},
 				{
 					label: 'Auth & Identity',
+					translations: { ja: '認証とアイデンティティ' },
 					items: [{ autogenerate: { directory: 'recipes/auth' } }],
 				},
 				{
 					label: 'Beyond the Browser',
+					translations: { ja: 'ブラウザの外側' },
 					items: [{ autogenerate: { directory: 'recipes/beyond-browser' } }],
 				},
 				{
 					label: 'Strategy & Maintenance',
+					translations: { ja: '戦略とメンテナンス' },
 					items: [{ autogenerate: { directory: 'recipes/strategy' } }],
+				},
+				{
+					label: 'Consulting',
+					translations: { ja: 'コンサルティング' },
+					items: [
+						{
+							label: 'Hire me — untestable.dev',
+							translations: { ja: 'ご相談は untestable.dev へ' },
+							link: 'https://untestable.dev/',
+							attrs: { target: '_blank' },
+						},
+					],
 				},
 			],
 		}),

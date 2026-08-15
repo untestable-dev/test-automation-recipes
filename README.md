@@ -2,13 +2,13 @@
 
 Use-case-driven recipes for the hard-to-test parts of the web — microphone input, inertial maps, vanishing toasts, passkeys, flaky-test repair — beyond what Playwright supports out of the box.
 
-Built with [Astro Starlight](https://starlight.astro.build/). Deployed to GitHub Pages.
+**Live at [untestable.dev](https://untestable.dev/).** Built with [Astro Starlight](https://starlight.astro.build/). Deployed to GitHub Pages.
 
 ## Development
 
 ```sh
 npm install
-npm run dev      # http://localhost:4321/test-automation-recipes
+npm run dev      # http://localhost:4321
 npm run build    # static build into dist/
 npm run preview
 ```
@@ -36,8 +36,9 @@ To see the params in reports, register them once in GA4 as **event-scoped custom
 
 ## Custom domain
 
-When the domain is ready:
+`untestable.dev` is registered at Cloudflare Registrar. DNS (Cloudflare, **DNS only** — not proxied, so GitHub Pages can provision TLS):
 
-1. In `astro.config.mjs`, set `site: 'https://<your-domain>'` and **remove** the `base` line.
-2. Repository **Settings → Pages → Custom domain** → enter the domain (GitHub creates the `CNAME` automatically). Enable *Enforce HTTPS*.
-3. At your DNS provider: `CNAME` record pointing the (sub)domain to `tsuemura.github.io`. For an apex domain, use `A`/`ALIAS` records per [GitHub's docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+- `untestable.dev` CNAME → `tsuemura.github.io` (apex, CNAME-flattened by Cloudflare)
+- `www.untestable.dev` CNAME → `tsuemura.github.io` (GitHub redirects it to the apex)
+
+The custom domain is set in repository **Settings → Pages**, and `site` in `astro.config.mjs` points at `https://untestable.dev` (no `base`).

@@ -54,10 +54,7 @@ gtag('config', '${GA_ID}');
 
 // https://astro.build/config
 export default defineConfig({
-	// GitHub Pages project site. When the custom domain is live, change `site`
-	// to e.g. 'https://testautomation.recipes' and remove `base` (see README).
-	site: 'https://tsuemura.github.io',
-	base: '/test-automation-recipes',
+	site: 'https://untestable.dev',
 	integrations: [
 		starlight({
 			title: 'Test Automation Recipes',

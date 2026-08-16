@@ -56,10 +56,6 @@ gtag('config', '${GA_ID}');
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://recipes.untestable.dev',
-	redirects: {
-		'/': '/recipes/media/mock-microphone-input/',
-		'/ja/': '/ja/recipes/media/mock-microphone-input/',
-	},
 	integrations: [
 		starlight({
 			title: 'Test Automation Recipes',

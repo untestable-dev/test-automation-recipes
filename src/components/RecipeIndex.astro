@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+	locale?: 'en' | 'ja';
+}
+const { locale = 'en' } = Astro.props;
+
+const CATEGORIES: [string, string, string][] = [
+	['media', 'Media & Devices', 'メディアとデバイス'],
+	['complex-ui', 'Complex UI', '複雑なUI'],
+	['auth', 'Auth & Identity', '認証とアイデンティティ'],
+	['beyond-browser', 'Beyond the Browser', 'ブラウザの外側'],
+	['strategy', 'Strategy & Maintenance', '戦略とメンテナンス'],
+];
+
+const prefix = locale === 'ja' ? 'ja/recipes/' : 'recipes/';
+const docs = await getCollection('docs');
+const items = (dir: string) =>
+	docs
+		.filter((d) => d.id.startsWith(prefix + dir + '/'))
+		.sort((a, b) => (a.data.sidebar?.order ?? 99) - (b.data.sidebar?.order ?? 99));
+---
+
+{
+	CATEGORIES.map(([dir, en, ja]) => (
+		<>
+			<h2>{locale === 'ja' ? ja : en}</h2>
+			<ul>
+				{items(dir).map((d) => (
+					<li>
+						<a href={`/${d.id}/`}>{d.data.title}</a>
+					</li>
+				))}
+			</ul>
+		</>
+	))
+}

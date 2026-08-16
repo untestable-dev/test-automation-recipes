@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** part of your product is a Windows desktop application — a point-of-sale client, a device-configuration tool, an installer, a legacy WPF admin app. No browser, no DOM, and none of your web tooling applies. It still needs regression tests.
 
+> ▶ **Runnable sample**: [`examples/windows-flaui`](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples/windows-flaui) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 - Playwright, Selenium and friends drive *browsers*. A native window has no DOM — instead Windows exposes a **UI Automation (UIA) tree** of elements.

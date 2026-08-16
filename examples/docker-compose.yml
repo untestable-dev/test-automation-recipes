@@ -1,0 +1,6 @@
+services:
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - '1025:1025' # SMTP — the demo server sends here when it's up
+      - '8025:8025' # Web UI + REST API

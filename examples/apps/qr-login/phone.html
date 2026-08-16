@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Phone — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 24rem; margin: 3rem auto; }
+		#state { font-weight: bold; font-size: 1.2rem; }
+	</style>
+</head>
+<body>
+	<h1>📱 Phone</h1>
+	<p id="state">Linking…</p>
+	<script>
+		(async () => {
+			const id = new URLSearchParams(location.search).get('session');
+			const res = await fetch(`/api/session/link/${id}`, { method: 'POST' });
+			document.getElementById('state').textContent = res.ok ? 'Linked' : 'Unknown session';
+		})();
+	</script>
+</body>
+</html>

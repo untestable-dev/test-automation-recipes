@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>TOTP enrollment — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		code { background: #eee; padding: 0.2rem 0.5rem; font-size: 1.1rem; letter-spacing: 0.1em; }
+		input { font-size: 1rem; padding: 0.4rem; width: 8rem; }
+		button { font-size: 1rem; padding: 0.4rem 1rem; }
+		#status { margin-top: 1rem; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Enable two-factor authentication</h1>
+	<p>Can't scan? Enter this secret manually:</p>
+	<p><code data-testid="totp-secret"></code></p>
+	<label>Verification code <input id="code" inputmode="numeric" maxlength="6" /></label>
+	<button id="verify">Verify</button>
+	<p id="status"></p>
+	<script>
+		const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+		const $ = (id) => document.getElementById(id);
+
+		// random 20-byte secret, base32-encoded (what the QR would carry)
+		const raw = crypto.getRandomValues(new Uint8Array(20));
+		let bits = '';
+		for (const b of raw) bits += b.toString(2).padStart(8, '0');
+		let secret = '';
+		for (let i = 0; i + 5 <= bits.length; i += 5) {
+			secret += ALPHABET[parseInt(bits.slice(i, i + 5), 2)];
+		}
+		document.querySelector('[data-testid=totp-secret]').textContent = secret;
+
+		function base32decode(s) {
+			let bin = '';
+			for (const c of s.replace(/=+$/, '')) {
+				bin += ALPHABET.indexOf(c.toUpperCase()).toString(2).padStart(5, '0');
+			}
+			const out = new Uint8Array(Math.floor(bin.length / 8));
+			for (let i = 0; i < out.length; i++) out[i] = parseInt(bin.slice(i * 8, i * 8 + 8), 2);
+			return out;
+		}
+
+		async function totp(secret, counter) {
+			const key = await crypto.subtle.importKey(
+				'raw', base32decode(secret), { name: 'HMAC', hash: 'SHA-1' }, false, ['sign'],
+			);
+			const msg = new Uint8Array(8);
+			new DataView(msg.buffer).setBigUint64(0, BigInt(counter));
+			const mac = new Uint8Array(await crypto.subtle.sign('HMAC', key, msg));
+			const offset = mac[mac.length - 1] & 0x0f;
+			const code =
+				(((mac[offset] & 0x7f) << 24) | (mac[offset + 1] << 16) | (mac[offset + 2] << 8) | mac[offset + 3]) %
+				1_000_000;
+			return String(code).padStart(6, '0');
+		}
+
+		$('verify').addEventListener('click', async () => {
+			const entered = $('code').value.trim();
+			const now = Math.floor(Date.now() / 1000 / 30);
+			// accept the current window and its neighbours (clock skew)
+			for (const c of [now - 1, now, now + 1]) {
+				if (entered === (await totp(secret, c))) {
+					$('status').textContent = 'Two-factor enabled';
+					return;
+				}
+			}
+			$('status').textContent = 'Invalid code';
+		});
+	</script>
+</body>
+</html>

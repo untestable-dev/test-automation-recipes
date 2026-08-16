@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** signup sends a confirmation link, password reset sends a token, an order sends a receipt. The user journey *leaves the browser* — and your test must follow it into the inbox and back.
 
+> ▶ **Runnable sample**: [`test-emails.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-emails.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 Playwright ends at the browser. The email leaves your app via SMTP, and there's nothing to `locator()` on. Sending real email from CI is worse: slow, rate-limited, spam-filtered, and it leaks test traffic to real providers.

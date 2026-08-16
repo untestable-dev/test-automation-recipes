@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** a notification chime, a media player, a game. The regression you fear is *silence* — the element "plays" but no sound comes out (muted track, broken codec, autoplay policy, volume 0).
 
+> ▶ **Runnable sample**: [`assert-sound-is-playing.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/assert-sound-is-playing.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 Headless browsers have no speakers, and Playwright has no "is sound coming out" API. `expect(el).toHaveJSProperty('paused', false)` passes even when the output is silent — `paused === false` only means the element *wants* to play.

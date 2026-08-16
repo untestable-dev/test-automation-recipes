@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Voice memo — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; }
+		#result { margin-top: 1rem; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Voice memo</h1>
+	<button id="record">Record</button>
+	<button id="stop" disabled>Stop</button>
+	<p id="status">idle</p>
+	<p id="result"></p>
+	<script>
+		let recorder, chunks = [];
+		const $ = (id) => document.getElementById(id);
+
+		$('record').addEventListener('click', async () => {
+			const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+			chunks = [];
+			recorder = new MediaRecorder(stream);
+			recorder.ondataavailable = (e) => chunks.push(e.data);
+			recorder.onstop = analyze;
+			recorder.start();
+			$('status').textContent = 'recording…';
+			$('record').disabled = true;
+			$('stop').disabled = false;
+		});
+
+		$('stop').addEventListener('click', () => {
+			recorder.stop();
+			$('stop').disabled = true;
+		});
+
+		async function analyze() {
+			const blob = new Blob(chunks);
+			const ctx = new AudioContext();
+			const buf = await ctx.decodeAudioData(await blob.arrayBuffer());
+			const data = buf.getChannelData(0);
+			let sum = 0;
+			for (let i = 0; i < data.length; i++) sum += data[i] * data[i];
+			const rms = Math.sqrt(sum / data.length);
+			$('status').textContent = 'done';
+			$('result').textContent = rms > 0.01
+				? `Voice detected (${buf.duration.toFixed(1)}s, rms ${rms.toFixed(3)})`
+				: 'Silence recorded';
+		}
+	</script>
+</body>
+</html>

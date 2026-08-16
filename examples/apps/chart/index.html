@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Revenue chart — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 44rem; margin: 3rem auto; }
+		canvas { border: 1px solid #ddd; }
+	</style>
+</head>
+<body>
+	<h1>Revenue chart</h1>
+	<canvas id="chart" width="640" height="360"></canvas>
+	<script>
+		const canvas = document.getElementById('chart');
+		const ctx = canvas.getContext('2d');
+		const DATA = [40, 80, 55, 70];        // -> bar heights ×3 px
+		const COLORS = ['#3b82f6', '#3b82f6', '#ef4444', '#3b82f6'];
+		const BASE = 320, BAR_W = 80, GAP = 40, LEFT = 60;
+		const start = Date.now();
+
+		function draw() {
+			const progress = Math.min(1, (Date.now() - start) / 600); // entry animation
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.strokeStyle = '#94a3b8';
+			ctx.beginPath();
+			ctx.moveTo(LEFT - 10, BASE);
+			ctx.lineTo(canvas.width - 20, BASE);
+			ctx.stroke();
+			DATA.forEach((v, i) => {
+				const h = v * 3 * progress;
+				ctx.fillStyle = COLORS[i];
+				ctx.fillRect(LEFT + i * (BAR_W + GAP), BASE - h, BAR_W, h);
+			});
+			// live timestamp — the classic screenshot-diff saboteur
+			ctx.fillStyle = '#64748b';
+			ctx.font = '14px monospace';
+			const t = new Date();
+			const ts = [t.getHours(), t.getMinutes(), t.getSeconds()]
+				.map((n) => String(n).padStart(2, '0')).join(':');
+			ctx.clearRect(canvas.width - 110, 0, 110, 30);
+			ctx.fillText(ts, canvas.width - 100, 20);
+			requestAnimationFrame(draw);
+		}
+		draw();
+	</script>
+</body>
+</html>

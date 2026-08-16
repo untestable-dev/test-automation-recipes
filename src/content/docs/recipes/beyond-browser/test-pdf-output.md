@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your app generates PDFs — invoices, reports, tickets, contracts. "Clicking *Download invoice* produces a correct PDF" is a real user journey, and a regression here reaches customers on paper.
 
+> ▶ **Runnable sample**: [`test-pdf-output.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-pdf-output.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 The browser either downloads the file (nothing rendered to assert on) or shows it in a native PDF viewer Playwright can't see into. Either way, the content lives in a binary file, not the DOM.

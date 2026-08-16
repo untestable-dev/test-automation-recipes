@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your app records the user's voice — speech-to-text, a voice memo, a language-learning app grading pronunciation, an audio level meter. You want an automated test that *speaks into the microphone*.
 
+> ▶ **Runnable sample**: [`mock-microphone-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-microphone-input.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 Playwright has no API for microphone input. The workarounds you'll find have sharp edges:

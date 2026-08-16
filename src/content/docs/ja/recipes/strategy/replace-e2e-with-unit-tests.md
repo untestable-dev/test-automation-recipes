@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** E2Eスイートは40分かかり、なお成長し続けている。しかしその多くは、ブラウザを起動し、ログインし、3画面遷移して……*割引が正しく計算されるか*を確認しているだけ。ブラウザの税金を払わずに、同じ確信だけを手に入れたい。
 
+> ▶ **動くサンプル**: [`replace-e2e-with-unit-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/replace-e2e-with-unit-tests.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 E2Eテストを削除するのはカバレッジを削除するように感じられます。必要なのは、テストの**どの部分**が本当にブラウザを必要としているかを見抜く目です。ほとんどのE2Eテストは、1つのジャーニー(E2Eが必要)と多数の*判定ロジック*(不要)を束ねています。この判断を代行するツールはありませんが、繰り返し使える手順はあります。

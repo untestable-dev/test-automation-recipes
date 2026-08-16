@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** the release question is never "is line coverage ≥ 80%?" — it's "**can a customer still check out?**" You want a report that maps *user-facing use cases* to the tests that prove them, and flags the use cases nothing proves.
 
+> ▶ **Runnable sample**: [`measure-use-case-coverage.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/measure-use-case-coverage.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 Code coverage tools measure lines executed, which says nothing about scenarios proven: 90% line coverage can coexist with "password reset is untested". Use cases live in specs and heads, not in any artifact a tool can count — until you make them one.

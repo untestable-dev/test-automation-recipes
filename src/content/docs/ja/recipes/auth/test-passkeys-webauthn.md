@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** アプリがパスキーによる登録・ログイン（WebAuthn）に対応している。セキュリティキーを挿さず、Touch IDのプロンプトも出さずに、「ユーザーがパスキーを登録し、それで再ログインできる」ことをCIで証明したい。
 
+> ▶ **動くサンプル**: [`test-passkeys-webauthn.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-passkeys-webauthn.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 WebAuthnは意図的に*ハードウェア*（プラットフォーム認証器やセキュリティキー）と、どんな自動化からもクリックできないブラウザネイティブのプロンプトを介して通信します。Playwrightにはパスキー用のAPIがなく、ヘッドレス環境では `navigator.credentials.create()` は単に応答を返さなくなります。

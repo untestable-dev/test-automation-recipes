@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your suite is 2% flaky, which is enough to make every red build ambiguous. Retries hide the problem; humans fix the same three flake patterns over and over. You want the *fixing* automated too.
 
+> ▶ **Runnable sample**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 A flaky test fails without a code change, so the failure alone doesn't tell you what to change. The cause is usually **timing you can't see in a screenshot**: content that pops in late, a toast that steals a click, staged rendering that moves the button between `locator()` and `click()`. Diagnosis needs evidence of *what the screen did over time* — then a candidate fix, then statistical proof the fix worked.

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Camera color scanner — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; }
+		#detected { margin-top: 1rem; font-weight: bold; }
+		canvas { border: 1px solid #ccc; }
+	</style>
+</head>
+<body>
+	<h1>Camera color scanner</h1>
+	<p>Points the camera at something and reports its dominant color.
+		(A jsQR-based QR scanner works exactly the same way: draw frames to a
+		canvas, then decode the ImageData instead of averaging it.)</p>
+	<button id="start">Start camera</button>
+	<video id="cam" autoplay playsinline muted hidden></video>
+	<canvas id="frame" width="160" height="120"></canvas>
+	<p id="detected">idle</p>
+	<script>
+		const video = document.getElementById('cam');
+		const canvas = document.getElementById('frame');
+		const ctx = canvas.getContext('2d', { willReadFrequently: true });
+		const out = document.getElementById('detected');
+
+		document.getElementById('start').addEventListener('click', async () => {
+			const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+			video.srcObject = stream;
+			await video.play();
+			setInterval(scan, 200);
+		});
+
+		function scan() {
+			if (video.videoWidth === 0) return;
+			ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+			const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+			let r = 0, g = 0, b = 0;
+			const n = data.length / 4;
+			for (let i = 0; i < data.length; i += 4) {
+				r += data[i]; g += data[i + 1]; b += data[i + 2];
+			}
+			r = Math.round(r / n); g = Math.round(g / n); b = Math.round(b / n);
+			const hex = '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
+			out.textContent = `Detected: ${hex}`;
+			out.dataset.r = r; out.dataset.g = g; out.dataset.b = b;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Clipboard — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; }
+		.grid { display: grid; grid-template-columns: 8rem 8rem; gap: 4px; margin: 1rem 0; }
+		.cell { border: 1px solid #999; padding: 0.5rem; min-height: 1.2rem; }
+		.cell:focus { outline: 2px solid #2563eb; }
+		#editor { border: 1px solid #999; padding: 0.5rem; min-height: 3rem; margin-top: 1rem; }
+	</style>
+</head>
+<body>
+	<h1>Clipboard playground</h1>
+
+	<button id="copy">Copy link</button>
+	<span id="copy-status"></span>
+
+	<h2>Spreadsheet grid</h2>
+	<div class="grid">
+		<div class="cell" id="a1" contenteditable="true"></div>
+		<div class="cell" id="b1" contenteditable="true"></div>
+		<div class="cell" id="a2" contenteditable="true"></div>
+		<div class="cell" id="b2" contenteditable="true"></div>
+	</div>
+
+	<h2>Rich editor</h2>
+	<div id="editor" contenteditable="true"></div>
+
+	<script>
+		const $ = (id) => document.getElementById(id);
+
+		$('copy').addEventListener('click', async () => {
+			await navigator.clipboard.writeText('http://localhost:4173/s/abc123');
+			$('copy-status').textContent = 'Copied!';
+		});
+
+		// TSV paste fills the grid starting at A1 (like a spreadsheet)
+		document.querySelector('.grid').addEventListener('paste', (e) => {
+			e.preventDefault();
+			const rows = e.clipboardData.getData('text/plain').split('\n');
+			const cells = [['a1', 'b1'], ['a2', 'b2']];
+			rows.forEach((row, r) =>
+				row.split('\t').forEach((value, c) => {
+					if (cells[r]?.[c]) $(cells[r][c]).textContent = value;
+				}),
+			);
+		});
+
+		// Rich paste keeps only <b>/<strong>, drops everything else
+		$('editor').addEventListener('paste', (e) => {
+			e.preventDefault();
+			const html = e.clipboardData.getData('text/html');
+			if (!html) {
+				$('editor').append(e.clipboardData.getData('text/plain'));
+				return;
+			}
+			const doc = new DOMParser().parseFromString(html, 'text/html');
+			const sanitize = (node) => {
+				let out = '';
+				for (const child of node.childNodes) {
+					if (child.nodeType === Node.TEXT_NODE) out += child.textContent;
+					else if (child.nodeType === Node.ELEMENT_NODE) {
+						const tag = child.tagName.toLowerCase();
+						if (tag === 'b' || tag === 'strong') out += `<strong>${sanitize(child)}</strong>`;
+						else if (tag === 'script' || tag === 'style') continue;
+						else out += sanitize(child);
+					}
+				}
+				return out;
+			};
+			$('editor').innerHTML = sanitize(doc.body);
+		});
+	</script>
+</body>
+</html>

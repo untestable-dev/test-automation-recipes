@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# examples artifacts
+examples/test-results/
+examples/tests/fixtures/
+examples/flaky.json
+examples/usecase-coverage.md
+examples/windows-flaui/**/bin/
+examples/windows-flaui/**/obj/

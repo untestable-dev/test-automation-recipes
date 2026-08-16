@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** アプリがユーザーの声を録音する — 音声認識(Speech-to-Text)、ボイスメモ、発音を採点する語学学習アプリ、音声レベルメーター。**マイクに向かって話す**自動テストを書きたい。
 
+> ▶ **動くサンプル**: [`mock-microphone-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-microphone-input.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 Playwrightにはマイク入力のためのAPIがありません。よく見つかる回避策には、それぞれ大きな制約があります:

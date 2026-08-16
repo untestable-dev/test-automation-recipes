@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Confirm — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		#result { font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Account confirmation</h1>
+	<p id="result"></p>
+	<script>
+		const token = new URLSearchParams(location.search).get('token');
+		document.getElementById('result').textContent = token
+			? 'Account confirmed'
+			: 'Missing token';
+	</script>
+</body>
+</html>

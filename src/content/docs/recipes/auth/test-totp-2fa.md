@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** accounts on your app (or the app you must log into before testing anything else) are protected by an authenticator app — Google Authenticator-style 6-digit codes. Tests need to get past that screen.
 
+> ▶ **Runnable sample**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 The code changes every 30 seconds and lives on a phone. But TOTP is an open algorithm (RFC 6238): the phone only knows a **shared secret** — and if your test knows it too, it can compute the same codes.

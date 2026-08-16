@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** 「リンクをコピー」ボタン、セルのペーストを受け付けるスプレッドシートグリッド、Wordのマークアップを整形してくれるエディタ。コピー&ペーストは中核的なインタラクションでありながら、自動化できるものの中で最もブラウザ間の差異が大きい部類です。
 
+> ▶ **動くサンプル**: [`test-clipboard.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-clipboard.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 クリップボードは**システム**リソースで、ブラウザごとに異なるパーミッションとユーザーアクティベーションのルールに守られています。Playwrightにはクリップボードの第一級APIがなく、Chromiumで動くコードがWebKitでは静かに失敗します。

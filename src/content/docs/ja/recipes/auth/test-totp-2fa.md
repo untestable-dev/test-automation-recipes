@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** 自分のアプリ（あるいはテストの前段でログインが必要なアプリ）のアカウントが認証アプリ — Google Authenticator形式の6桁コード — で保護されている。テストはこの画面を通過しなければならない。
 
+> ▶ **動くサンプル**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 コードは30秒ごとに変わり、スマホの中にあります。しかしTOTPは公開されたアルゴリズム（RFC 6238）です。スマホが知っているのは**共有シークレット**だけ — テストも同じシークレットを知っていれば、同じコードを計算できます。

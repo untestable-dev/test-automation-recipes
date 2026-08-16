@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your app has a search box, an editor, a form — and users in Japan type into it through an IME (Input Method Editor): they type `nihongo`, see an underlined composition string `にほんご`, and confirm it into `日本語`. Autocomplete dropdowns, character counters and `Enter`-to-submit handlers routinely break *only* during composition.
 
+> ▶ **Runnable sample**: [`test-ime-composition.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-ime-composition.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 - `page.fill()` and `keyboard.insertText()` set the value **without any composition events** — the exact code path IME users exercise (`compositionstart` → `compositionupdate` → `compositionend`) is never run.

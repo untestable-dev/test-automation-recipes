@@ -1,0 +1,24 @@
+{
+	"name": "test-automation-recipes-examples",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"test": "playwright test",
+		"test:unit": "node --test 'unit/*.test.mjs'",
+		"serve": "node server.mjs"
+	},
+	"dependencies": {
+		"agent-screen-observer": "^0.1.1",
+		"jsqr": "^1.4.0",
+		"nodemailer": "^7.0.0",
+		"otplib": "^12.0.1",
+		"pdf-lib": "^1.17.1",
+		"pdf-parse": "^1.1.1",
+		"playwright-audio-mocking": "^0.1.1",
+		"pngjs": "^7.0.0"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.62.1",
+		"@types/node": "^26.0.0"
+	}
+}

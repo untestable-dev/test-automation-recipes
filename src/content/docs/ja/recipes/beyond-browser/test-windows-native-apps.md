@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** プロダクトの一部がWindowsデスクトップアプリ——POSクライアント、デバイス設定ツール、インストーラー、レガシーなWPF管理画面。ブラウザもDOMもなく、Web用のツールは一切通用しません。それでもリグレッションテストは必要です。
 
+> ▶ **動くサンプル**: [`examples/windows-flaui`](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples/windows-flaui)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 - PlaywrightやSeleniumが操作するのは*ブラウザ*です。ネイティブウィンドウにDOMはなく、代わりにWindowsは **UI Automation(UIA)ツリー** を公開しています。

@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** サインアップすると確認リンクが送られ、パスワードリセットはトークンを送り、注文すると領収書が届く。ユーザージャーニーが*ブラウザの外へ出ていく* — テストはそれを受信箱まで追いかけ、また戻ってこなければならない。
 
+> ▶ **動くサンプル**: [`test-emails.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-emails.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 Playwrightの守備範囲はブラウザまでです。メールはSMTP経由でアプリから出ていき、`locator()` で触れるものは何もありません。CIから本物のメールを送るのはさらに悪手です。遅く、レート制限があり、スパムフィルタに引っかかり、テストのトラフィックが実プロバイダに漏れます。

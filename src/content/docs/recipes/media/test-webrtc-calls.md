@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your app has real-time calls — video chat, a support hotline widget, pair-programming voice. You want a test where user A joins, speaks, and user B actually receives the media.
 
+> ▶ **Runnable sample**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 A call needs **two browsers**, media devices on both ends, and assertions about things that never touch the DOM: is a connection established? is audio *flowing*? Playwright can orchestrate multiple pages, but gives you nothing for the media itself.
@@ -85,6 +87,7 @@ await callee.addInitScript(() => {
 
 ## Caveats
 
+- Headless Chromium hides local ICE candidates behind mDNS `.local` names that never resolve, leaving connections stuck in `new` — launch with `--disable-features=WebRtcHideLocalIpsWithMdns` in tests.
 - Run both fake devices: mocked mic for the *content* you control, `--use-fake-device-for-media-stream` as a fallback camera (see [Mock camera input](../mock-camera-input/)).
 - Two pages in one browser process can be slow in CI; if timings matter, use two workers with a small signaling fixture instead.
 - TURN/STUN behavior differs between localhost and production networks — a passing localhost call doesn't prove NAT traversal works.

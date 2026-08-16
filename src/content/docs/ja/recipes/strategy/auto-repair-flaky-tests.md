@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** テストスイートの2%がフレーキーで、赤いビルドを見ても「本物の失敗かどうか」判断できない。リトライは問題を隠すだけで、人間は同じ3パターンのフレークを延々と直し続けている。この「修正」自体を自動化したい。
 
+> ▶ **動くサンプル**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 フレーキーテストはコード変更なしに失敗するため、失敗そのものからは「何を直せばいいか」が分かりません。原因の多くは**スクリーンショットには写らないタイミングの問題**です: 遅れて流れ込んでくるコンテンツ、クリックを横取りするトースト、`locator()` と `click()` の間にボタンを動かす段階的レンダリング。診断には*画面が時間とともにどう動いたか*の証拠が必要で、その先に修正候補の生成と、修正が効いたことの統計的な証明が要ります。

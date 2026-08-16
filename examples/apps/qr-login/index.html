@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Pair your phone — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		#qr { border: 8px solid #111; border-radius: 8px; display: block; }
+		#state { margin-top: 1rem; font-weight: bold; font-size: 1.2rem; }
+	</style>
+</head>
+<body>
+	<h1>Pair your phone</h1>
+	<canvas id="qr" width="240" height="240"></canvas>
+	<p id="state">Waiting for your phone…</p>
+	<script>
+		(async () => {
+			const { id } = await (await fetch('/api/session/create', { method: 'POST' })).json();
+			const url = `${location.origin}/apps/qr-login/phone.html?session=${id}`;
+
+			// Stand-in for a real QR code: the pairing URL drawn on a canvas.
+			// (A production flow renders a QR here; the test can then decode it
+			// with jsQR — see the recipe.)
+			const el = document.getElementById('qr');
+			el.dataset.pairUrl = url;
+			const ctx = el.getContext('2d');
+			ctx.fillStyle = '#fff';
+			ctx.fillRect(0, 0, 240, 240);
+			ctx.fillStyle = '#111';
+			ctx.font = 'bold 14px monospace';
+			ctx.fillText('SCAN TO PAIR', 60, 40);
+			ctx.font = '9px monospace';
+			ctx.fillText(url.slice(0, 42), 8, 120);
+			ctx.fillText(url.slice(42), 8, 134);
+
+			const poll = setInterval(async () => {
+				const s = await (await fetch(`/api/session/${id}`)).json();
+				if (s.linked) {
+					clearInterval(poll);
+					document.getElementById('state').textContent = 'Connected to your phone';
+				}
+			}, 1000);
+		})();
+	</script>
+</body>
+</html>

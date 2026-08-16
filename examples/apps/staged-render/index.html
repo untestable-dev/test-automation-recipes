@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Staged rendering — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		.item { padding: 0.6rem 0.8rem; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 0.5rem; }
+		#add { font-size: 1rem; padding: 0.6rem 1.4rem; margin-top: 0.5rem; }
+		#cart { float: right; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<p id="cart">Cart: <span id="cart-count">0</span></p>
+	<h1>Products</h1>
+	<div id="list"></div>
+	<button id="add">Add to cart</button>
+	<script>
+		// Staged rendering: recommendations arrive late (variable backend
+		// timing), get inserted ABOVE the button, and shift it down.
+		const list = document.getElementById('list');
+		const add = (name) => {
+			const d = document.createElement('div');
+			d.className = 'item';
+			d.textContent = name;
+			list.append(d);
+		};
+		['Cassette player', 'Walkman', 'MiniDisc deck', 'Boombox'].forEach(add);
+
+		const delay = 800 + Math.random() * 500; // 800–1300ms
+		setTimeout(() => {
+			add('8-track cartridge');
+			add('Reel-to-reel');
+		}, delay);
+
+		document.getElementById('add').addEventListener('click', () => {
+			const c = document.getElementById('cart-count');
+			c.textContent = String(Number(c.textContent) + 1);
+		});
+	</script>
+</body>
+</html>

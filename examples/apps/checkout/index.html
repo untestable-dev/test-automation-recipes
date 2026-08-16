@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Checkout — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		.row { display: flex; justify-content: space-between; max-width: 20rem; }
+		#total { font-weight: bold; font-size: 1.2rem; margin-top: 1rem; }
+	</style>
+</head>
+<body>
+	<h1>Checkout</h1>
+	<div id="cart"></div>
+	<label><input type="checkbox" id="member" /> I'm a member</label>
+	<p id="total"></p>
+	<script type="module">
+		import { checkoutTotal } from '/shared/checkout-total.mjs';
+
+		const items = [
+			{ name: 'Shirt', price: 2600, qty: 2 },
+			{ name: 'Socks', price: 400, qty: 1 },
+		];
+		document.getElementById('cart').innerHTML = items
+			.map((i) => `<div class="row"><span>${i.name} ×${i.qty}</span><span>${i.price * i.qty}</span></div>`)
+			.join('');
+
+		const render = () => {
+			const user = { member: document.getElementById('member').checked };
+			document.getElementById('total').textContent = `Total: ${checkoutTotal(items, user)}`;
+		};
+		document.getElementById('member').addEventListener('change', render);
+		render();
+	</script>
+</body>
+</html>

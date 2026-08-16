@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Pannable map — demo app</title>
+	<style>
+		html, body { margin: 0; height: 100%; overflow: hidden; }
+		canvas { display: block; cursor: grab; touch-action: none; }
+	</style>
+</head>
+<body>
+	<canvas id="map"></canvas>
+	<script>
+		// A hand-rolled "map": procedurally generated tiles (no network, fully
+		// deterministic) with pointer panning and post-release inertia.
+		const canvas = document.getElementById('map');
+		const ctx = canvas.getContext('2d');
+		const CELL = 100;
+		let ox = 0, oy = 0; // world coordinate at viewport top-left
+
+		function hashColor(cx, cy) {
+			let h = (cx * 374761393 + cy * 668265263) >>> 0;
+			h = ((h ^ (h >> 13)) * 1274126177) >>> 0;
+			return `hsl(${h % 360} 42% 78%)`;
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			const x0 = Math.floor(ox / CELL), y0 = Math.floor(oy / CELL);
+			const x1 = Math.floor((ox + canvas.width) / CELL);
+			const y1 = Math.floor((oy + canvas.height) / CELL);
+			for (let cy = y0; cy <= y1; cy++) {
+				for (let cx = x0; cx <= x1; cx++) {
+					const sx = Math.round(cx * CELL - ox), sy = Math.round(cy * CELL - oy);
+					ctx.fillStyle = hashColor(cx, cy);
+					ctx.fillRect(sx, sy, CELL, CELL);
+					ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+					ctx.strokeRect(sx + 0.5, sy + 0.5, CELL, CELL);
+					ctx.fillStyle = '#1e293b';
+					ctx.font = 'bold 14px monospace';
+					ctx.fillText(cx + ',' + cy, sx + 8, sy + 22);
+					ctx.fillStyle = '#0f172a';
+					ctx.beginPath();
+					ctx.arc(
+						sx + 20 + (Math.abs(cx * 7 + cy * 13) % 60),
+						sy + 45 + (Math.abs(cx * 31 + cy * 3) % 40),
+						6, 0, 7,
+					);
+					ctx.fill();
+				}
+			}
+		}
+
+		function resize() {
+			canvas.width = innerWidth;
+			canvas.height = innerHeight;
+			draw();
+		}
+		addEventListener('resize', resize);
+		resize();
+
+		// --- panning with inertia ---
+		let dragging = false, lastX = 0, lastY = 0, lastT = 0, vx = 0, vy = 0, raf = 0;
+
+		canvas.addEventListener('pointerdown', (e) => {
+			dragging = true;
+			lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
+			vx = vy = 0;
+			cancelAnimationFrame(raf);
+		});
+		addEventListener('pointermove', (e) => {
+			if (!dragging) return;
+			const now = performance.now();
+			const dx = e.clientX - lastX, dy = e.clientY - lastY;
+			ox -= dx; oy -= dy;
+			const dt = Math.max(1, now - lastT);
+			vx = (dx / dt) * 16.7; // px per frame
+			vy = (dy / dt) * 16.7;
+			lastX = e.clientX; lastY = e.clientY; lastT = now;
+			draw();
+		});
+		addEventListener('pointerup', () => {
+			if (!dragging) return;
+			dragging = false;
+			if (performance.now() - lastT > 60) { vx = vy = 0; } // finger stopped first
+			const cap = 15, m = Math.hypot(vx, vy);
+			if (m > cap) { vx *= cap / m; vy *= cap / m; }
+			inertia();
+		});
+
+		function inertia() {
+			if (Math.hypot(vx, vy) < 0.3) return; // settled
+			ox -= vx; oy -= vy;
+			vx *= 0.92; vy *= 0.92;
+			draw();
+			raf = requestAnimationFrame(inertia);
+		}
+	</script>
+</body>
+</html>

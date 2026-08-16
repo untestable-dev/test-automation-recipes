@@ -7,6 +7,8 @@ sidebar:
 
 **Use case:** your app uses the camera — a QR/barcode scanner, an ID-document capture flow, a video chat preview. You want tests to "show" the camera a prepared video.
 
+> ▶ **Runnable sample**: [`mock-camera-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-camera-input.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+
 ## Why this is hard
 
 There is no Playwright API for camera input, and unlike audio there's no cross-browser library that solves it cleanly (yet). What exists is a patchwork of browser-specific switches.

@@ -1,0 +1,40 @@
+name: Examples
+
+on:
+  push:
+    branches: [main]
+    paths: ['examples/**', '.github/workflows/examples.yml']
+  pull_request:
+    paths: ['examples/**', '.github/workflows/examples.yml']
+  workflow_dispatch:
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+    services:
+      mailpit:
+        image: axllent/mailpit
+        ports:
+          - 1025:1025
+          - 8025:8025
+    defaults:
+      run:
+        working-directory: examples
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: node scripts/make-fixtures.mjs
+      - run: npx playwright install chromium --with-deps
+      - run: npx playwright test
+        env:
+          MAILPIT: '1'
+      - run: node --test 'unit/*.test.mjs'
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: examples/test-results/
+          retention-days: 7

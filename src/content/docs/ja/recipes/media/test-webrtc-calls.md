@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** アプリにリアルタイム通話がある — ビデオチャット、サポートホットラインのウィジェット、ペアプログラミングのボイス。ユーザーAが参加して話し、ユーザーBが実際にメディアを受信するテストを書きたい。
 
+> ▶ **動くサンプル**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 通話には**2つのブラウザ**と両側のメディアデバイスが必要で、しかもDOMに一切現れないもの — 接続は確立されたか? 音声は*流れて*いるか? — を検証しなければなりません。Playwrightは複数ページのオーケストレーションはできますが、メディアそのものについては何も提供しません。
@@ -85,6 +87,7 @@ await callee.addInitScript(() => {
 
 ## 注意点
 
+- ヘッドレスChromiumはローカルICE候補をmDNSの `.local` 名で隠すため接続が `new` のまま進まないことがあります。テストでは `--disable-features=WebRtcHideLocalIpsWithMdns` を付けて起動してください。
 - フェイクデバイスは両方動かしましょう: 内容を制御したい音声はモックマイク、カメラのフォールバックには `--use-fake-device-for-media-stream`([カメラ入力をモックする](../mock-camera-input/)参照)。
 - 1つのブラウザプロセスに2ページはCIで遅くなることがあります。タイミングが重要なら、小さなシグナリングフィクスチャを使って2ワーカーに分けましょう。
 - TURN/STUNの挙動はlocalhostと本番ネットワークで異なります — localhostで通った通話は、NAT越えが動くことの証明にはなりません。

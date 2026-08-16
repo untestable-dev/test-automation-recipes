@@ -7,6 +7,8 @@ sidebar:
 
 **ユースケース:** リリース判定の問いは「行カバレッジ80%以上か?」ではなく「**顧客はまだチェックアウトできるのか?**」です。*ユーザーに見えるユースケース*とそれを証明するテストの対応表を作り、何にも証明されていないユースケースを炙り出したい。
 
+> ▶ **動くサンプル**: [`measure-use-case-coverage.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/measure-use-case-coverage.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+
 ## なぜ難しいのか
 
 コードカバレッジツールが測るのは実行された行数で、証明されたシナリオについては何も語りません: 行カバレッジ90%と「パスワードリセットが未テスト」は平気で両立します。ユースケースは仕様書と頭の中に住んでいて、ツールが数えられる成果物には存在しません — 成果物にしてやるまでは。

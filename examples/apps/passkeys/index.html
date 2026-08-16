@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Passkeys — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; margin-right: 0.5rem; }
+		#status { margin-top: 1rem; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Account security</h1>
+	<button id="add">Add a passkey</button>
+	<button id="signin">Sign in with a passkey</button>
+	<p id="status">no passkey</p>
+	<script>
+		const $ = (id) => document.getElementById(id);
+		const rand = (n) => crypto.getRandomValues(new Uint8Array(n));
+
+		$('add').addEventListener('click', async () => {
+			try {
+				const cred = await navigator.credentials.create({
+					publicKey: {
+						challenge: rand(32),
+						rp: { name: 'demo', id: 'localhost' },
+						user: { id: rand(16), name: 'demo@example.test', displayName: 'Demo' },
+						pubKeyCredParams: [
+							{ type: 'public-key', alg: -7 },
+							{ type: 'public-key', alg: -257 },
+						],
+						authenticatorSelection: { residentKey: 'required', userVerification: 'required' },
+					},
+				});
+				window.__credentialId = new Uint8Array(cred.rawId);
+				$('status').textContent = 'Passkey added';
+			} catch (err) {
+				$('status').textContent = 'Enrollment failed';
+			}
+		});
+
+		$('signin').addEventListener('click', async () => {
+			try {
+				await navigator.credentials.get({
+					publicKey: {
+						challenge: rand(32),
+						rpId: 'localhost',
+						userVerification: 'required',
+					},
+				});
+				$('status').textContent = 'Signed in';
+			} catch (err) {
+				$('status').textContent = 'Sign-in failed';
+			}
+		});
+	</script>
+</body>
+</html>

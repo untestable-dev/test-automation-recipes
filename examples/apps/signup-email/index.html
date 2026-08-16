@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Signup — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		input, button { font-size: 1rem; padding: 0.5rem 0.8rem; }
+		#status { margin-top: 1rem; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Sign up</h1>
+	<form id="signup">
+		<label>Email <input type="email" name="email" required /></label>
+		<button type="submit">Sign up</button>
+	</form>
+	<p id="status"></p>
+	<script>
+		document.getElementById('signup').addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const email = new FormData(e.target).get('email');
+			await fetch('/api/signup', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify({ email }),
+			});
+			document.getElementById('status').textContent = 'Check your inbox';
+		});
+	</script>
+</body>
+</html>

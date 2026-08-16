@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Order #1042 — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		table { border-collapse: collapse; margin: 1rem 0; }
+		td, th { border: 1px solid #ccc; padding: 0.4rem 0.8rem; text-align: left; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; }
+	</style>
+	<script src="/vendor/pdf-lib.js"></script>
+</head>
+<body>
+	<h1>Order #1042</h1>
+	<table>
+		<tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+		<tr><td>Laptop stand</td><td>1</td><td>$51.25</td></tr>
+		<tr><td>Mechanical keyboard</td><td>2</td><td>$580.00</td></tr>
+		<tr><td>4K monitor</td><td>1</td><td>$705.75</td></tr>
+	</table>
+	<p><strong>Total: $1,337.00</strong></p>
+	<button id="download">Download invoice</button>
+	<script>
+		document.getElementById('download').addEventListener('click', async () => {
+			const { PDFDocument, StandardFonts } = PDFLib;
+			const doc = await PDFDocument.create();
+			const page = doc.addPage([595, 842]); // A4
+			const font = await doc.embedFont(StandardFonts.Helvetica);
+			const lines = [
+				'Invoice #1042',
+				'',
+				'Laptop stand           1    $51.25',
+				'Mechanical keyboard    2    $580.00',
+				'4K monitor             1    $705.75',
+				'',
+				'Total: $1,337.00',
+			];
+			lines.forEach((text, i) => {
+				page.drawText(text, { x: 60, y: 780 - i * 24, size: 14, font });
+			});
+			// object streams off: keeps the file readable by older PDF parsers
+			const bytes = await doc.save({ useObjectStreams: false });
+			const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'invoice-1042.pdf';
+			a.click();
+		});
+	</script>
+</body>
+</html>

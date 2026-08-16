@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Call — demo app</title>
+	<style>
+		body { font-family: system-ui; max-width: 40rem; margin: 3rem auto; }
+		button { font-size: 1rem; padding: 0.5rem 1.2rem; }
+		#state { font-weight: bold; }
+	</style>
+</head>
+<body>
+	<h1>Call <span id="role"></span></h1>
+	<button id="join">Join</button>
+	<p>Connection: <span id="state">new</span></p>
+	<audio id="remote" autoplay></audio>
+	<script>
+		const params = new URLSearchParams(location.search);
+		const role = params.get('role'); // 'caller' | 'callee'
+		const room = params.get('room');
+		document.getElementById('role').textContent = `(${role})`;
+
+		// Same-origin signaling: two pages in one browser share a BroadcastChannel.
+		const ch = new BroadcastChannel('room-' + room);
+		const pc = new RTCPeerConnection();
+		const pendingIce = [];
+
+		pc.onconnectionstatechange = () => {
+			document.getElementById('state').textContent = pc.connectionState;
+		};
+		pc.onicecandidate = (e) => {
+			if (e.candidate) ch.postMessage({ type: 'ice', from: role, candidate: e.candidate.toJSON() });
+		};
+		pc.ontrack = (e) => {
+			document.getElementById('remote').srcObject = e.streams[0];
+		};
+
+		ch.onmessage = async (e) => {
+			const m = e.data;
+			if (m.from === role) return;
+			if (m.type === 'offer') {
+				await pc.setRemoteDescription(m.sdp);
+				await flushIce();
+				const answer = await pc.createAnswer();
+				await pc.setLocalDescription(answer);
+				ch.postMessage({ type: 'answer', from: role, sdp: pc.localDescription.toJSON() });
+			} else if (m.type === 'answer') {
+				await pc.setRemoteDescription(m.sdp);
+				await flushIce();
+			} else if (m.type === 'ice') {
+				if (pc.remoteDescription) await pc.addIceCandidate(m.candidate).catch(() => {});
+				else pendingIce.push(m.candidate);
+			}
+		};
+
+		async function flushIce() {
+			while (pendingIce.length) await pc.addIceCandidate(pendingIce.shift()).catch(() => {});
+		}
+
+		document.getElementById('join').addEventListener('click', async () => {
+			if (role === 'caller') {
+				const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+				for (const track of stream.getTracks()) pc.addTrack(track, stream);
+				const offer = await pc.createOffer();
+				await pc.setLocalDescription(offer);
+				ch.postMessage({ type: 'offer', from: role, sdp: pc.localDescription.toJSON() });
+			}
+			document.getElementById('join').disabled = true;
+		});
+	</script>
+</body>
+</html>

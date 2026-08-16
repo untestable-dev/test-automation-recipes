@@ -2,6 +2,8 @@
 
 Every recipe on [recipes.untestable.dev](https://recipes.untestable.dev/) has a working sample here: a small demo app under `apps/` and a Playwright spec under `tests/` that mirrors the recipe slug.
 
+**Play with the demo apps in your browser: [demos.untestable.dev](https://demos.untestable.dev/)** (deployed via `node scripts/build-demos.mjs && npx wrangler deploy -c wrangler-demos.jsonc`). The tests below run against the same apps locally.
+
 ## Run everything
 
 ```sh

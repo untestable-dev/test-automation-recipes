@@ -27,3 +27,4 @@ examples/flaky.json
 examples/usecase-coverage.md
 examples/windows-flaui/**/bin/
 examples/windows-flaui/**/obj/
+examples/demos-dist/

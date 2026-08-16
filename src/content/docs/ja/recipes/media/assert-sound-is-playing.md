@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** 通知チャイム、メディアプレイヤー、ゲーム。恐れるべきリグレッションは*無音*です — 要素は「再生中」なのに音が出ていない(ミュートされたトラック、壊れたコーデック、自動再生ポリシー、音量0)。
 
-> ▶ **動くサンプル**: [`assert-sound-is-playing.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/assert-sound-is-playing.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`assert-sound-is-playing.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/assert-sound-is-playing.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/chime/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

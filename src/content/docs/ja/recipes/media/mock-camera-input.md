@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリがカメラを使う — QR/バーコードスキャナー、本人確認書類の撮影フロー、ビデオチャットのプレビュー。用意した動画をカメラに「見せる」テストを書きたい。
 
-> ▶ **動くサンプル**: [`mock-camera-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-camera-input.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`mock-camera-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-camera-input.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/camera-scan/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

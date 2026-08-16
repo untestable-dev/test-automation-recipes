@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your E2E suite takes 40 minutes and keeps growing, but many tests boot a browser, log in, and navigate three screens… to check that a *discount is calculated correctly*. You want the confidence without the browser tax.
 
-> ▶ **Runnable sample**: [`replace-e2e-with-unit-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/replace-e2e-with-unit-tests.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`replace-e2e-with-unit-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/replace-e2e-with-unit-tests.spec.ts) / [live demo](https://demo.untestable.dev/apps/checkout/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

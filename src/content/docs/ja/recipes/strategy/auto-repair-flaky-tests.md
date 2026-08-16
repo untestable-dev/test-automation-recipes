@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** テストスイートの2%がフレーキーで、赤いビルドを見ても「本物の失敗かどうか」判断できない。リトライは問題を隠すだけで、人間は同じ3パターンのフレークを延々と直し続けている。この「修正」自体を自動化したい。
 
-> ▶ **動くサンプル**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/staged-render/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

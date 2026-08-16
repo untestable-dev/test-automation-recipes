@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリがパスキーによる登録・ログイン（WebAuthn）に対応している。セキュリティキーを挿さず、Touch IDのプロンプトも出さずに、「ユーザーがパスキーを登録し、それで再ログインできる」ことをCIで証明したい。
 
-> ▶ **動くサンプル**: [`test-passkeys-webauthn.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-passkeys-webauthn.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-passkeys-webauthn.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-passkeys-webauthn.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/passkeys/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

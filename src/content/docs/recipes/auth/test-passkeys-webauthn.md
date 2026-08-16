@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your app supports passkey registration and login (WebAuthn). You want CI to prove that a user can enroll a passkey and sign back in with it — with no security key plugged in and no Touch ID prompt.
 
-> ▶ **Runnable sample**: [`test-passkeys-webauthn.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-passkeys-webauthn.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-passkeys-webauthn.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-passkeys-webauthn.spec.ts) / [live demo](https://demo.untestable.dev/apps/passkeys/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

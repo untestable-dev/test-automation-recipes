@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリがユーザーの声を録音する — 音声認識(Speech-to-Text)、ボイスメモ、発音を採点する語学学習アプリ、音声レベルメーター。**マイクに向かって話す**自動テストを書きたい。
 
-> ▶ **動くサンプル**: [`mock-microphone-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-microphone-input.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`mock-microphone-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-microphone-input.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/voice-memo/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

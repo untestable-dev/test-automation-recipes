@@ -13,9 +13,22 @@ cpSync(join(ROOT, 'apps'), join(OUT, 'apps'), { recursive: true });
 cpSync(join(ROOT, 'node_modules/jsqr/dist/jsQR.js'), join(OUT, 'vendor/jsqr.js'));
 cpSync(join(ROOT, 'node_modules/pdf-lib/dist/pdf-lib.min.js'), join(OUT, 'vendor/pdf-lib.js'));
 
+// The transcriber is a separate Vite project; include its build when present.
+const tdist = join(ROOT, 'transcriber/dist');
+let hasTranscriber = false;
+try {
+	cpSync(join(tdist, 'transcriber'), join(OUT, 'apps/transcriber'), { recursive: true });
+	cpSync(join(tdist, 'assets'), join(OUT, 'apps/transcriber/assets'), { recursive: true });
+	cpSync(join(tdist, 'styles.css'), join(OUT, 'apps/transcriber/styles.css'));
+	hasTranscriber = true;
+} catch {
+	console.warn('transcriber/dist not found — run `cd transcriber && npm i && npm run build` to include it');
+}
+
 const apps = readdirSync(join(ROOT, 'apps'), { withFileTypes: true })
 	.filter((d) => d.isDirectory())
 	.map((d) => d.name)
+	.concat(hasTranscriber ? ['transcriber'] : [])
 	.sort();
 
 writeFileSync(

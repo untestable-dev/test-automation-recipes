@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリに地図(Leaflet、MapLibre、Google Maps)や、パン・ズームできるcanvasが埋め込まれている。「ユーザーが左にスワイプすると、地図が滑らかにパンして隣の街で止まる」ことを、慣性まで含めてテストしたい。
 
-> ▶ **動くサンプル**: [`test-map-uis.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-map-uis.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-map-uis.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-map-uis.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/map/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

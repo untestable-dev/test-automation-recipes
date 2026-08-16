@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** 自分のアプリ（あるいはテストの前段でログインが必要なアプリ）のアカウントが認証アプリ — Google Authenticator形式の6桁コード — で保護されている。テストはこの画面を通過しなければならない。
 
-> ▶ **動くサンプル**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/totp/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリに検索ボックス、エディタ、フォームがある。そして日本のユーザーはIME(Input Method Editor)を通して入力します。`nihongo` とタイプすると下線つきの未確定文字列 `にほんご` が表示され、確定すると `日本語` になります。オートコンプリートのドロップダウン、文字数カウンタ、`Enter` での送信ハンドラは、*変換中に限って*壊れることが珍しくありません。
 
-> ▶ **動くサンプル**: [`test-ime-composition.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-ime-composition.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-ime-composition.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-ime-composition.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/search-form/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** accounts on your app (or the app you must log into before testing anything else) are protected by an authenticator app — Google Authenticator-style 6-digit codes. Tests need to get past that screen.
 
-> ▶ **Runnable sample**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-totp-2fa.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/auth/test-totp-2fa.spec.ts) / [live demo](https://demo.untestable.dev/apps/totp/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

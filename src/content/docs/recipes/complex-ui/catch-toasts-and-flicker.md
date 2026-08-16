@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** clicking *Save* shows a toast for two seconds. Or worse: an error screen flashes for 300ms during navigation, a validation message self-dismisses, the layout jumps *after* the page looked done. You need to assert on things that are **gone by the time you look**.
 
-> ▶ **Runnable sample**: [`catch-toasts-and-flicker.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/catch-toasts-and-flicker.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`catch-toasts-and-flicker.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/catch-toasts-and-flicker.spec.ts) / [live demo](https://demo.untestable.dev/apps/toasts/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

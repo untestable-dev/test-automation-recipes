@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your app generates PDFs — invoices, reports, tickets, contracts. "Clicking *Download invoice* produces a correct PDF" is a real user journey, and a regression here reaches customers on paper.
 
-> ▶ **Runnable sample**: [`test-pdf-output.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-pdf-output.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-pdf-output.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-pdf-output.spec.ts) / [live demo](https://demo.untestable.dev/apps/invoice/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** E2Eスイートは40分かかり、なお成長し続けている。しかしその多くは、ブラウザを起動し、ログインし、3画面遷移して……*割引が正しく計算されるか*を確認しているだけ。ブラウザの税金を払わずに、同じ確信だけを手に入れたい。
 
-> ▶ **動くサンプル**: [`replace-e2e-with-unit-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/replace-e2e-with-unit-tests.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`replace-e2e-with-unit-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/replace-e2e-with-unit-tests.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/checkout/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

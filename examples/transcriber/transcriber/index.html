@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Voice Transcriber | Web App Demos</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>" />
+    <script>
+      // Resolve the language before first paint: ?lang= → saved choice → browser language.
+      var lang = new URLSearchParams(location.search).get('lang');
+      try { lang = lang || localStorage.getItem('lang'); } catch (e) {}
+      document.documentElement.lang = (lang || navigator.language).slice(0, 2) === 'ja' ? 'ja' : 'en';
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container app">
+      <div class="topbar">
+        <nav class="breadcrumb"><a href="/">← Demo apps</a></nav>
+        <nav class="lang-switch" aria-label="Language">
+          <button type="button" data-set-lang="en">English</button>
+          <button type="button" data-set-lang="ja">日本語</button>
+        </nav>
+      </div>
+      <h1>🎙️ <span lang="en">Voice Transcriber</span><span lang="ja">音声文字起こしサービス</span></h1>
+      <p>
+        <span lang="en">
+          Transcribes your microphone <strong>in real time</strong> with
+          <a href="https://github.com/openai/whisper">Whisper</a>
+          (<a href="https://github.com/huggingface/transformers.js">transformers.js</a>)
+          running entirely in your browser. Your audio never leaves your machine.
+        </span>
+        <span lang="ja">
+          マイクの音声を、ブラウザ内で動く
+          <a href="https://github.com/openai/whisper">Whisper</a>
+          (<a href="https://github.com/huggingface/transformers.js">transformers.js</a>)
+          が<strong>リアルタイムに</strong>文字起こしします。音声がサーバーに送信されることはありません。
+        </span>
+      </p>
+
+      <div class="panel">
+        <div class="controls">
+          <button id="record" data-testid="record">● <span lang="en">Start recording</span><span lang="ja">録音開始</span></button>
+          <button id="stop" data-testid="stop" class="stop" disabled>■ <span lang="en">Stop &amp; transcribe</span><span lang="ja">停止して文字起こし</span></button>
+          <label>
+            <span lang="en">Language:</span><span lang="ja">言語:</span>
+            <select id="language" data-testid="language">
+              <option value="auto" selected>Auto-detect</option>
+              <option value="japanese">Japanese</option>
+              <option value="english">English</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="meter"><div id="meter-bar" class="meter-bar" data-testid="meter"></div></div>
+        <div id="status" class="status" data-testid="status"></div>
+        <label class="llm-toggle">
+          <input type="checkbox" id="use-llm" data-testid="use-llm" checked />
+          <span lang="en">Format with LLM (sends only the transcribed text to Workers AI)</span>
+          <span lang="ja">LLMで整形する(文字起こしテキストのみを Workers AI に送信)</span>
+        </label>
+        <div class="results">
+          <div>
+            <h3><span lang="en">Raw transcript</span><span lang="ja">生の文字起こし</span></h3>
+            <div id="transcript" class="transcript" data-testid="transcript"
+              data-placeholder="The transcript will appear here"></div>
+          </div>
+          <div>
+            <h3><span lang="en">LLM-formatted</span><span lang="ja">LLM整形後</span></h3>
+            <div id="formatted" class="transcript" data-testid="formatted"
+              data-placeholder="The formatted result will appear here"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="note">
+        <span lang="en">
+          The model (~40MB) is downloaded on first use. Your audio is never sent to a server
+          (with LLM formatting enabled, only the transcribed <strong>text</strong> is sent).
+          This app also serves as the target app for the
+          <a href="https://github.com/tsuemura/playwright-audio-mocking">playwright-audio-mocking</a>
+          E2E testing demos.
+        </span>
+        <span lang="ja">
+          初回はモデル(約 40MB)のダウンロードがあります。音声がサーバーに送信されることはありません(LLM整形を有効にした場合、文字起こし後の<strong>テキストのみ</strong>が送信されます)。このアプリは
+          <a href="https://github.com/tsuemura/playwright-audio-mocking">playwright-audio-mocking</a>
+          の E2E テストデモの対象アプリとしても使われています。
+        </span>
+      </p>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

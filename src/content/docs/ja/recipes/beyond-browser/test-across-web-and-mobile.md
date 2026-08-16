@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** プロダクトの本当のユーザージャーニーがデバイスをまたぐ——Webでサインアップしてスマホで認証する。デスクトップやTVの画面のQRコードをアプリでスキャンしてログインする。キャンペーンページのディープリンクをタップするとネイティブアプリに着地する。それぞれ単体では動くのに、**バグは受け渡しの瞬間に住んでいます**。
 
-> ▶ **動くサンプル**: [`test-across-web-and-mobile.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-across-web-and-mobile.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-across-web-and-mobile.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-across-web-and-mobile.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/qr-login/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

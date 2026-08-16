@@ -22,9 +22,10 @@ pnpm-debug.log*
 
 # examples artifacts
 examples/test-results/
-examples/tests/fixtures/
+examples/tests/fixtures/hello.wav
 examples/flaky.json
 examples/usecase-coverage.md
 examples/windows-flaui/**/bin/
 examples/windows-flaui/**/obj/
 examples/demos-dist/
+examples/transcriber/dist/

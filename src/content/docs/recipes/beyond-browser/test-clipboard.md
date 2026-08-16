@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** a "Copy link" button, a spreadsheet grid that accepts pasted cells, an editor that cleans up pasted Word markup. Copy/paste is a core interaction — and one of the most browser-divergent things you can automate.
 
-> ▶ **Runnable sample**: [`test-clipboard.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-clipboard.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-clipboard.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-clipboard.spec.ts) / [live demo](https://demo.untestable.dev/apps/clipboard/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

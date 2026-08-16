@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your app embeds a map (Leaflet, MapLibre, Google Maps) or any pannable/zoomable canvas. You want to test "when the user swipes left, the map pans smoothly and settles on the next city" — including the inertia.
 
-> ▶ **Runnable sample**: [`test-map-uis.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-map-uis.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-map-uis.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-map-uis.spec.ts) / [live demo](https://demo.untestable.dev/apps/map/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

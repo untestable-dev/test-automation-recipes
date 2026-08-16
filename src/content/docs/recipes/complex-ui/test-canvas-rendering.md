@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** a chart library, a diagram editor, a WebGL product configurator, a drawing app. The thing you must assert on is *painted*, not in the DOM — `page.locator()` sees one big `<canvas>` and nothing inside it.
 
-> ▶ **Runnable sample**: [`test-canvas-rendering.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-canvas-rendering.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-canvas-rendering.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/test-canvas-rendering.spec.ts) / [live demo](https://demo.untestable.dev/apps/chart/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリにリアルタイム通話がある — ビデオチャット、サポートホットラインのウィジェット、ペアプログラミングのボイス。ユーザーAが参加して話し、ユーザーBが実際にメディアを受信するテストを書きたい。
 
-> ▶ **動くサンプル**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/call/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** a notification chime, a media player, a game. The regression you fear is *silence* — the element "plays" but no sound comes out (muted track, broken codec, autoplay policy, volume 0).
 
-> ▶ **Runnable sample**: [`assert-sound-is-playing.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/assert-sound-is-playing.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`assert-sound-is-playing.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/assert-sound-is-playing.spec.ts) / [live demo](https://demo.untestable.dev/apps/chime/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

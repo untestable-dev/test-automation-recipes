@@ -6,5 +6,9 @@
 		"directory": "./demos-dist",
 		"binding": "ASSETS"
 	},
-	"routes": [{ "pattern": "demos.untestable.dev", "custom_domain": true }]
+	"routes": [
+		{ "pattern": "demo.untestable.dev", "custom_domain": true },
+		{ "pattern": "demos.untestable.dev", "custom_domain": true }
+	],
+	"ai": { "binding": "AI" }
 }

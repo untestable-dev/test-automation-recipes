@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your app uses the camera — a QR/barcode scanner, an ID-document capture flow, a video chat preview. You want tests to "show" the camera a prepared video.
 
-> ▶ **Runnable sample**: [`mock-camera-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-camera-input.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`mock-camera-input.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/mock-camera-input.spec.ts) / [live demo](https://demo.untestable.dev/apps/camera-scan/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

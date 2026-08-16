@@ -2,7 +2,7 @@
 
 Every recipe on [recipes.untestable.dev](https://recipes.untestable.dev/) has a working sample here: a small demo app under `apps/` and a Playwright spec under `tests/` that mirrors the recipe slug.
 
-**Play with the demo apps in your browser: [demos.untestable.dev](https://demos.untestable.dev/)** (deployed via `node scripts/build-demos.mjs && npx wrangler deploy -c wrangler-demos.jsonc`). The tests below run against the same apps locally.
+**Play with the demo apps in your browser: [demo.untestable.dev](https://demo.untestable.dev/)** (deployed via `node scripts/build-demos.mjs && npx wrangler deploy -c wrangler-demos.jsonc`). The tests below run against the same apps locally.
 
 ## Run everything
 
@@ -60,6 +60,7 @@ Poke at the demo apps yourself: `npm run serve` → http://localhost:4173/apps/v
   npx playwright test tests/strategy --reporter=line,./reporters/usecase-reporter.ts
   cat usecase-coverage.md
   ```
+- **Voice Transcriber** (`transcriber/`, live at [demo.untestable.dev/apps/transcriber/](https://demo.untestable.dev/apps/transcriber/)): in-browser Whisper transcription — the heavyweight showcase for the microphone recipe. Its E2E test downloads a ~40MB model, so it's opt-in: `WHISPER=1 npx playwright test tests/media/transcriber-whisper.spec.ts`. Build for the demos site with `cd transcriber && npm i && npm run build`.
 - **Windows native**: see [`windows-flaui/README.md`](windows-flaui/README.md) — requires Windows + .NET 8.
 
 Everything is MIT licensed — copy whatever is useful.

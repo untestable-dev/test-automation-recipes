@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** *保存*をクリックすると2秒間トーストが表示される。もっと厄介なケースでは、画面遷移中にエラー画面が300msだけ表示される、バリデーションメッセージが勝手に消える、ページが完成して見えた*後に*レイアウトが跳ねる。**見に行った頃にはもう消えている**ものを検証しなければなりません。
 
-> ▶ **動くサンプル**: [`catch-toasts-and-flicker.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/catch-toasts-and-flicker.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`catch-toasts-and-flicker.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/complex-ui/catch-toasts-and-flicker.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/toasts/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your suite is 2% flaky, which is enough to make every red build ambiguous. Retries hide the problem; humans fix the same three flake patterns over and over. You want the *fixing* automated too.
 
-> ▶ **Runnable sample**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`auto-repair-flaky-tests.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/strategy/auto-repair-flaky-tests.spec.ts) / [live demo](https://demo.untestable.dev/apps/staged-render/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your product's real user journey crosses devices — sign up on the web, verify on your phone; scan a QR code on a TV or desktop screen to log in in the app; tap a deep link in a campaign page that lands in the native app. Each half works when tested alone. The bug lives in the handoff.
 
-> ▶ **Runnable sample**: [`test-across-web-and-mobile.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-across-web-and-mobile.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-across-web-and-mobile.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-across-web-and-mobile.spec.ts) / [live demo](https://demo.untestable.dev/apps/qr-login/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** アプリがPDF — 請求書、レポート、チケット、契約書 — を生成する。「*請求書をダウンロード*をクリックすると正しいPDFが得られる」は立派なユーザージャーニーであり、ここでのリグレッションは紙になって顧客の手元に届いてしまう。
 
-> ▶ **動くサンプル**: [`test-pdf-output.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-pdf-output.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-pdf-output.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-pdf-output.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/invoice/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

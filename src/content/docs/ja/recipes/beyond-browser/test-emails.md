@@ -7,7 +7,7 @@ sidebar:
 
 **ユースケース:** サインアップすると確認リンクが送られ、パスワードリセットはトークンを送り、注文すると領収書が届く。ユーザージャーニーが*ブラウザの外へ出ていく* — テストはそれを受信箱まで追いかけ、また戻ってこなければならない。
 
-> ▶ **動くサンプル**: [`test-emails.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-emails.spec.ts)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
+> ▶ **動くサンプル**: [`test-emails.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/beyond-browser/test-emails.spec.ts) / [デモを触る](https://demo.untestable.dev/apps/signup-email/)(実行方法は [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme))
 
 ## なぜ難しいのか
 

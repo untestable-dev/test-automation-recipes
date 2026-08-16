@@ -7,7 +7,7 @@ sidebar:
 
 **Use case:** your app has real-time calls — video chat, a support hotline widget, pair-programming voice. You want a test where user A joins, speaks, and user B actually receives the media.
 
-> ▶ **Runnable sample**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
+> ▶ **Runnable sample**: [`test-webrtc-calls.spec.ts`](https://github.com/untestable-dev/test-automation-recipes/blob/main/examples/tests/media/test-webrtc-calls.spec.ts) / [live demo](https://demo.untestable.dev/apps/call/) — how to run: [examples/README](https://github.com/untestable-dev/test-automation-recipes/tree/main/examples#readme)
 
 ## Why this is hard
 

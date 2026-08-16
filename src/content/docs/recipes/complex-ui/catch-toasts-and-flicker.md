@@ -3,9 +3,6 @@ title: Catch toasts and flicker
 description: Assert on UI that appears and disappears faster than your assertions — success toasts, flashing error screens, late layout shifts.
 sidebar:
   order: 2
-  badge:
-    text: Featured
-    variant: tip
 ---
 
 **Use case:** clicking *Save* shows a toast for two seconds. Or worse: an error screen flashes for 300ms during navigation, a validation message self-dismisses, the layout jumps *after* the page looked done. You need to assert on things that are **gone by the time you look**.

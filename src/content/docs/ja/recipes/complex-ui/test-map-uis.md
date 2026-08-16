@@ -3,9 +3,6 @@ title: 慣性つき地図UIをテストする
 description: アプリのDOMやJSに一切触れずに、地図を狙ったピクセル数だけ正確にパンし、ユーザーが実際に見た画面を検証します。
 sidebar:
   order: 1
-  badge:
-    text: 注目
-    variant: tip
 ---
 
 **ユースケース:** アプリに地図(Leaflet、MapLibre、Google Maps)や、パン・ズームできるcanvasが埋め込まれている。「ユーザーが左にスワイプすると、地図が滑らかにパンして隣の街で止まる」ことを、慣性まで含めてテストしたい。

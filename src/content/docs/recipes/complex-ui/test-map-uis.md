@@ -3,9 +3,6 @@ title: Test map UIs with inertial panning
 description: Pan a map by an exact pixel distance and assert what the user actually saw — without touching the app's DOM or JS.
 sidebar:
   order: 1
-  badge:
-    text: Featured
-    variant: tip
 ---
 
 **Use case:** your app embeds a map (Leaflet, MapLibre, Google Maps) or any pannable/zoomable canvas. You want to test "when the user swipes left, the map pans smoothly and settles on the next city" — including the inertia.

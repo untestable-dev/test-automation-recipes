@@ -3,9 +3,6 @@ title: Mock microphone input
 description: Stream real audio files into getUserMedia() so you can test speech recognition, voice memos and audio meters on every browser.
 sidebar:
   order: 1
-  badge:
-    text: Featured
-    variant: tip
 ---
 
 **Use case:** your app records the user's voice — speech-to-text, a voice memo, a language-learning app grading pronunciation, an audio level meter. You want an automated test that *speaks into the microphone*.

@@ -3,9 +3,6 @@ title: Auto-repair flaky tests
 description: Build a loop that detects flaky tests, diagnoses the visual cause, proposes a fix with an AI agent, and proves the fix by re-running.
 sidebar:
   order: 1
-  badge:
-    text: Featured
-    variant: tip
 ---
 
 **Use case:** your suite is 2% flaky, which is enough to make every red build ambiguous. Retries hide the problem; humans fix the same three flake patterns over and over. You want the *fixing* automated too.

@@ -56,11 +56,14 @@ gtag('config', '${GA_ID}');
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://recipes.untestable.dev',
+	redirects: {
+		'/': '/recipes/media/mock-microphone-input/',
+		'/ja/': '/ja/recipes/media/mock-microphone-input/',
+	},
 	integrations: [
 		starlight({
 			title: 'Test Automation Recipes',
-			description:
-				'Hands-on recipes for the hard-to-test parts of the web: microphone input, maps, toasts, WebAuthn, flaky-test repair and more — beyond what Playwright supports out of the box.',
+			description: 'Recipes for the hard-to-test apps.',
 			defaultLocale: 'root',
 			locales: {
 				root: { label: 'English', lang: 'en' },
@@ -79,11 +82,6 @@ export default defineConfig({
 			},
 			head: gaHead,
 			sidebar: [
-				{
-					label: 'Start Here',
-					translations: { ja: 'はじめに' },
-					items: ['libraries'],
-				},
 				{
 					label: 'Media & Devices',
 					translations: { ja: 'メディアとデバイス' },
